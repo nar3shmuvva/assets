@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Entries</title>
+</head>
+<body>
+    <h1>Search Entries</h1>
+    <form action="/search" method="POST">
+        <input type="text" name="search" placeholder="Search by IP, Hostname, or Owner" required>
+        <button type="submit">Search</button>
+    </form>
+    <hr>
+    {% if entries %}
+        <ul>
+            {% for entry in entries %}
+                <li>{{ entry.ip_address }} - {{ entry.hostname }} - {{ entry.owner }} - {{ entry.remarks }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No entries found. Try a different query.</p>
+    {% endif %}
+</body>
+</html>
+
